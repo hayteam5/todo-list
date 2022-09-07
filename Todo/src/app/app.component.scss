@@ -1,0 +1,22 @@
+.todoInput {
+  border: none;
+  background-color: black;
+  color: white;
+  width: 20%;
+  font-size: 20px;
+  margin: 20px 0 20px 40px;
+  padding: 3px;
+  outline: none;
+}
+
+.addBtn {
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 3px;
+  font-size: 20px;
+  &:hover {
+    opacity: 0.6;
+  }
+}
