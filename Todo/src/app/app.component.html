@@ -1,5 +1,7 @@
-<input type="text" name="text" class="todoInput" placeholder="Task name">
+<input type="text" name="text" class="todoInput" placeholder="Task name" [(ngModel)]="newTodo">
 <button
   class="addBtn"
   (click)="addTask()">Add
 </button>
+
+<app-todo-list [todo]="newTodo"></app-todo-list>

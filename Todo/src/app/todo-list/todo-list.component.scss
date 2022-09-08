@@ -1,0 +1,30 @@
+.todoLine {
+  display: flex;
+  margin: 1rem 1rem 1rem 0;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  .do {
+    padding: 0;
+    margin: 0;
+  }
+
+  .done {
+    text-decoration: line-through;
+    color: darkslategray;
+  }
+
+  input {
+    margin-right: 10px
+  }
+}
+
+.todoBlock {
+  margin-left: 40px;
+}

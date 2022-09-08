@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {TodoListComponent} from "./todo-list/todo-list.component";
 
 @Component({
   selector: 'app-root',
@@ -6,11 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Todo';
-  todos = [];
-  newTodo: string = '';
+
+  @ViewChild(TodoListComponent) todoList?: TodoListComponent
+
+  newTodo: string = ''
 
   addTask() {
-
+    if (this.newTodo) {
+      this.todoList?.addNewTodo()
+      this.newTodo = ''
+    }
   }
 }

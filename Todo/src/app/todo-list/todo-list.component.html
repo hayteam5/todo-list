@@ -1,1 +1,19 @@
-<input type="checkbox" name="checkbox" class="checkbox" [ngModel]='newTodo'>
+<div class="todoBlock" *ngIf="todos.length!=0">
+
+  <div class="todoLine" *ngFor="let t of todos, let i = index">
+
+    <input
+      type="checkbox"
+      name="checkbox"
+      class="checkbox"
+      id="{{i}}"
+      [(ngModel)]="isChecked"
+      (change)="checkValue(isChecked)"
+    >
+
+    <p class="do" *ngIf="isChecked === false">{{t}}</p>
+    <p class="done" *ngIf="isChecked === true">{{t}}</p>
+
+  </div>
+</div>
+
