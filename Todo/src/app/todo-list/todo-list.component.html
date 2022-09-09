@@ -1,18 +1,32 @@
 <div class="todoBlock" *ngIf="todos.length!=0">
 
-  <div class="todoLine" *ngFor="let t of todos, let i = index">
+  <div class="todoLine" *ngFor="let t of todos, let i = index" >
 
     <input
       type="checkbox"
-      name="checkbox"
       class="checkbox"
       id="{{i}}"
-      [(ngModel)]="isChecked"
-      (change)="checkValue(isChecked)"
+      [(ngModel)]="todos[i].done"
+      (change)="checkValue($event)"
     >
 
-    <p class="do" *ngIf="isChecked === false">{{t}}</p>
-    <p class="done" *ngIf="isChecked === true">{{t}}</p>
+    <button
+      id="{{i}}"
+      class="importantBtn btn "
+      (click)="addToImportant($event)"
+      *ngIf="!t.important"
+    >!!!</button>
+
+    <button
+      id="{{i}}"
+      class="importantBtn btn importantOn"
+      (click)="addToImportant($event)"
+      *ngIf="t.important"
+    >!!!</button>
+
+    <p class="do" *ngIf="!t.done">{{t.title}}</p>
+    <p class="done" *ngIf="t.done">{{t.title}} </p>
+
 
   </div>
 </div>

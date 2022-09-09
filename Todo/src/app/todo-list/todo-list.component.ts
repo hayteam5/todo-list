@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+} from '@angular/core';
 
-export interface Todo {
-  id: number,
-  done: boolean,
-  title: string,
-  favorite: boolean,
+export class Todo {
+  done: boolean = false
+  title: string = ''
+  important: boolean = false
 }
 
 @Component({
@@ -12,30 +14,36 @@ export interface Todo {
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
+
   @Input() title: string = "";
-  constructor() { }
 
+  constructor() {}
+
+  importantToggle = false
   todos: Todo[] = []
-  isChecked : boolean = false
-  id?: number
-  favorite: boolean = false
-  todo?: Todo
-
 
 
   addNewTodo(): void {
-      this.todo?.title = this.title
-      this.todos.push(this.todo)
-    }
+    const todo = new Todo()
+    todo.title = this.title
+    this.todos.push(todo)
+  }
+
+  checkValue(event: any): void {
+    const checkEvent = event.target.checked
+    const idEvent = event.target.id
+
+    this.todos[idEvent].done = checkEvent
+    console.log(this.todos[idEvent]);
+  }
+
+  addToImportant(event: any) {
+    const idEvent = event.target.id
+
+    this.importantToggle = !this.todos[idEvent].important
+    this.todos[idEvent].important = this.importantToggle
+
     console.log(this.todos)
-  }
-
-  ngOnInit(): void {
-  }
-
-  checkValue(check: boolean): void {
-    check = !check
-
   }
 }

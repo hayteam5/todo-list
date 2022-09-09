@@ -11,13 +11,14 @@
   }
 
   .do {
-    padding: 0;
     margin: 0;
+    padding-left: 20px;
   }
 
   .done {
     text-decoration: line-through;
     color: darkslategray;
+    padding-left: 20px;
   }
 
   input {
@@ -27,4 +28,22 @@
 
 .todoBlock {
   margin-left: 40px;
+}
+
+.importantBtn {
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 3px;
+  font-size: 20px;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.importantOn {
+  color: red;
+  font-weight: bold;
 }
