@@ -1,7 +1,4 @@
-import {
-  Component,
-  Input,
-} from '@angular/core';
+import {Component, Input,} from '@angular/core';
 
 export class Todo {
   done: boolean = false
@@ -16,13 +13,15 @@ export class Todo {
 })
 export class TodoListComponent {
 
-  @Input() title: string = "";
+  @Input() title: string = ''
+  @Input() searchTitle: string = ''
 
   constructor() {}
 
-  importantToggle = false
   todos: Todo[] = []
-
+  noFind: boolean = false
+  toDoFilterOn:boolean = false
+  importantFilterOn: boolean = false
 
   addNewTodo(): void {
     const todo = new Todo()
@@ -30,20 +29,21 @@ export class TodoListComponent {
     this.todos.push(todo)
   }
 
-  checkValue(event: any): void {
-    const checkEvent = event.target.checked
-    const idEvent = event.target.id
-
-    this.todos[idEvent].done = checkEvent
-    console.log(this.todos[idEvent]);
+  checkValue(event: any, id: number): void {
+    this.todos[id].done = event.target.checked
+    console.log(this.todos[id]);
   }
 
-  addToImportant(event: any) {
-    const idEvent = event.target.id
-
-    this.importantToggle = !this.todos[idEvent].important
-    this.todos[idEvent].important = this.importantToggle
-
+  addToImportant(id: number) {
+    this.todos[id].important = !this.todos[id].important
     console.log(this.todos)
+  }
+
+  onlyTodoFilter() {
+    this.toDoFilterOn = !this.toDoFilterOn
+  }
+
+  onlyImportantFilter() {
+    this.importantFilterOn = !this.importantFilterOn
   }
 }

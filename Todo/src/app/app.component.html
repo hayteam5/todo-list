@@ -1,7 +1,27 @@
-<input type="text" name="text" class="todoInput" placeholder="Task name" [(ngModel)]="newTodo">
+<input type="text" name="text" class="todoInput" placeholder="Type a name of new task" [(ngModel)]="newTodo">
+
 <button
-  class="addBtn"
+  class="addBtn btn"
   (click)="addTask()">Add
 </button>
 
-<app-todo-list [title]="newTodo"></app-todo-list>
+<input
+  type="text"
+  class="searchInput"
+  placeholder="Type to search task"
+  [(ngModel)]="newSearch"
+>
+
+<button
+  class="filterBtn btn"
+  (click)="newSearch=''">Search reset
+</button>
+
+<div class="filterContainer block">
+  <input type="checkbox" class="filterCheckbox" id="onlyToDo" (change)="onlyTodoFilter()">
+  <label for="onlyToDo" class="btn"> Only to do</label>
+  <input type="checkbox" class="filterCheckbox" id="onlyImportant" (change)="onlyImportantFilter()">
+  <label for="onlyImportant" class="btn"> Only importants</label>
+</div>
+
+<app-todo-list [title]="newTodo" [searchTitle]="newSearch"></app-todo-list>

@@ -8,16 +8,6 @@
 
   p {
     font-size: 20px;
-  }
-
-  .do {
-    margin: 0;
-    padding-left: 20px;
-  }
-
-  .done {
-    text-decoration: line-through;
-    color: darkslategray;
     padding-left: 20px;
   }
 
@@ -28,6 +18,7 @@
 
 .todoBlock {
   margin-left: 40px;
+  margin-top: 50px;
 }
 
 .importantBtn {
@@ -37,13 +28,26 @@
   cursor: pointer;
   padding: 3px;
   font-size: 20px;
-
-  &:hover {
-    opacity: 0.6;
   }
-}
 
-.importantOn {
+.important {
   color: red;
   font-weight: bold;
+}
+
+.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.do {
+  margin: 0;
+}
+
+.checkbox {
+  cursor: pointer;
+}
+
+.noFind {
+  font-size: 20px;
 }

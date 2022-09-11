@@ -1,33 +1,46 @@
 <div class="todoBlock" *ngIf="todos.length!=0">
 
-  <div class="todoLine" *ngFor="let t of todos, let i = index" >
+  <div class="todoLine" *ngFor="let todo of todos, let i = index">
 
     <input
+      *ngIf=
+        "todo.title.includes(searchTitle) &&
+          !(toDoFilterOn && todo.done) &&
+          !(importantFilterOn && !todo.important) "
       type="checkbox"
       class="checkbox"
       id="{{i}}"
       [(ngModel)]="todos[i].done"
-      (change)="checkValue($event)"
+      (change)="checkValue($event, i)"
     >
 
     <button
+      *ngIf=
+        "todo.title.includes(searchTitle) &&
+          !(toDoFilterOn && todo.done) &&
+          !(importantFilterOn && !todo.important) "
       id="{{i}}"
-      class="importantBtn btn "
-      (click)="addToImportant($event)"
-      *ngIf="!t.important"
-    >!!!</button>
+      class="importantBtn btn"
+      (click)="addToImportant(i)"
+      [class.important]="todo.important"
+      [class.done]="todo.done"
+    >!!!
+    </button>
 
-    <button
-      id="{{i}}"
-      class="importantBtn btn importantOn"
-      (click)="addToImportant($event)"
-      *ngIf="t.important"
-    >!!!</button>
-
-    <p class="do" *ngIf="!t.done">{{t.title}}</p>
-    <p class="done" *ngIf="t.done">{{t.title}} </p>
-
+    <p
+      *ngIf=
+        "todo.title.includes(searchTitle) &&
+          !(toDoFilterOn && todo.done) &&
+          !(importantFilterOn && !todo.important) "
+      [class.important]="todo.important"
+      [class.done]="todo.done"
+      [class.do]="todo.done"
+    >{{todo.title}}</p>
 
   </div>
-</div>
 
+  <!--<ng-template #noFind>
+    <p class="noFound"> Can't find a task... </p>
+  </ng-template>-->
+
+</div>

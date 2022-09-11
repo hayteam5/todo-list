@@ -9,7 +9,7 @@
   outline: none;
 }
 
-.addBtn {
+.btn {
   border: none;
   background-color: black;
   color: white;
@@ -18,5 +18,23 @@
   font-size: 20px;
   &:hover {
     opacity: 0.6;
+  }
+}
+
+.searchInput {
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  margin: 20px 0 20px 40px;
+  padding: 3px;
+  outline: none;
+}
+
+.block {
+  margin-left: 40px;
+
+  label {
+    margin-right: 40px;
   }
 }
